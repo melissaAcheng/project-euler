@@ -66,7 +66,43 @@ function largestPrimeFactor(number) {
 // Start prime equal to the smallest prime number
 // Start a while loop - stop when number / prime is 1 (so while prime <= number)
 // if prime is a factor of number, update max to prime and set number to number / prime
-// else increment prime by 1 
+// else increment prime by 1
 
+// 4. Largest Palindrome Product
 
+function largestPalindromeProduct(n) {
+	let num = 9;
+	for (let i = 1; i < n; i++) {
+		num += "9";
+	}
 
+	let largest = -Infinity;
+
+	for (let i = num; i > 0; i--) {
+		for (let j = num; j > 0; j--) {
+			const product = i * j;
+			if (isPalindrome(product) === true) {
+				largest = Math.max(largest, product);
+			}
+		}
+	}
+	return largest;
+}
+
+function isPalindrome(n) {
+	n = String(n);
+	let l = 0;
+	let r = n.length - 1;
+
+	while (l <= r) {
+		if (n[l] !== n[r]) {
+			return false;
+		} else {
+			l += 1;
+			r -= 1;
+		}
+	}
+	return true;
+}
+
+console.log(largestPalindromeProduct(4));
