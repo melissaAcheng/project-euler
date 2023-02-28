@@ -38,4 +38,35 @@ function fiboEvenSum(n) {
 	return sum;
 }
 
-console.log(fiboEvenSum(4000000));
+// console.log(fiboEvenSum(4000000));
+
+// 3. Largest Prime factor
+// The prime factors of 13195 are 5, 7, 13 and 29.
+// What is the largest prime factor of the number 600851475143 ?
+
+function largestPrimeFactor(number) {
+	let prime = 2;
+	let max = 0;
+
+	while (prime <= number) {
+		if (number % prime === 0) {
+			max = prime;
+			number = number / prime;
+		} else {
+			prime += 1;
+		}
+	}
+
+	return max;
+}
+
+// console.log(largestPrimeFactor(600851475143));
+
+// Steps:
+// Start prime equal to the smallest prime number
+// Start a while loop - stop when number / prime is 1 (so while prime <= number)
+// if prime is a factor of number, update max to prime and set number to number / prime
+// else increment prime by 1 
+
+
+
