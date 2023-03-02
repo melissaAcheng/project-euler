@@ -71,10 +71,11 @@ function largestPrimeFactor(number) {
 // 4. Largest Palindrome Product
 
 function largestPalindromeProduct(n) {
-	let num = 9;
-	for (let i = 1; i < n; i++) {
-		num += "9";
-	}
+	// let num = 9;
+	// for (let i = 1; i < n; i++) {
+	// 	num += "9";
+	// }
+	const num = Array(n).fill(9).join("");
 
 	let largest = -Infinity;
 
@@ -105,4 +106,47 @@ function isPalindrome(n) {
 	return true;
 }
 
-console.log(largestPalindromeProduct(4));
+// console.log(largestPalindromeProduct(4));
+
+// 5. Smallest multiple
+
+function smallestMult(n) {
+	let num = n;
+	let found = false;
+	// console.log(num);
+
+	while (!found) {
+		if (isDivisible(num, n) === true) {
+			found = true;
+		} else {
+			num += 1;
+		}
+	}
+	// console.log(num)
+	return num;
+}
+
+function isDivisible(num, n) {
+	for (let i = 1; i <= n; i++) {
+		if (num % i !== 0) {
+			return false;
+		}
+	}
+	return true;
+}
+
+// console.log(smallestMult(20));
+
+// 6. Sum Square Difference
+function sumSquareDifference(n) {
+	let sumSquare = 0;
+	let sum = 0;
+	for (let i = 1; i <= n; i++) {
+		sumSquare += i * i;
+		sum += i;
+	}
+
+	return sum * sum - sumSquare;
+}
+
+console.log(sumSquareDifference(100));
