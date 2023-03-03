@@ -149,4 +149,71 @@ function sumSquareDifference(n) {
 	return sum * sum - sumSquare;
 }
 
-console.log(sumSquareDifference(100));
+// console.log(sumSquareDifference(100));
+
+// using formulas (no looping)
+function squareDiff(n) {
+	return squareOfSum(n) - sumOfSquares(n);
+}
+
+function squareOfSum(n) {
+	const sum = (n * (n + 1)) / 2;
+	return Math.pow(sum, 2);
+}
+
+function sumOfSquares(n) {
+	return (n * (n + 1) * (2 * n + 1)) / 6;
+}
+
+// console.log(squareDiff(100));
+
+// 7. 10001st prime
+
+function nthPrime(n) {
+	const primes = [2];
+	let num = 3;
+
+	while (primes.length < n) {
+		if (isPrime(n)) {
+			primes.push(n);
+		}
+		num += 2;
+	}
+
+	return primes.pop();
+}
+
+function isPrime(num) {
+	if (num === 3) return true;
+	if (num % 2 === 0 || num % 3 === 0) return false;
+	for (let i = 5; i <= Math.sqrt(num); i += 6) {
+		if (num % i === 0 || num % (i + 2) === 0) return false;
+	}
+	return true;
+}
+
+function sieveOfEratosthenes(n) {
+	let output = [];
+	let array = Array(n).fill(true);
+
+	for (let i = 2; i <= Math.sqrt(n); i++) {
+		if (array[i] === true) {
+			for (let j = i * i; j <= n; j += i) {
+				array[j] = false;
+			}
+		}
+	}
+	for (let i = 2; i <= n; i++) {
+		if (array[i] === true) {
+			output.push(i);
+		}
+	}
+	return output;
+}
+
+// console.log(sieveOfEratosthenes(10));
+
+// console.log(isPrime(51));
+// console.log(nthPrime(6));
+
+
