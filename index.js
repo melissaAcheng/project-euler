@@ -261,4 +261,19 @@ function largestProductinaSeries(arr, n) {
 	return maxProduct;
 }
 
-console.log(largestProductinaSeries(thousandDigits, 13));
+// console.log(largestProductinaSeries(thousandDigits, 13));
+
+// 9. Special Pythagorean triplet
+
+function specialPythagoreanTriplet(n) {
+	// a < b < c
+	// a^2 + b^2 = c^2
+	for (let b = 1; b <= n; b++) {
+		for (let a = 2; a < b; a++) {
+			let c = Math.sqrt(Math.pow(b, 2) + Math.pow(a, 2));
+			if (a + b + c === n) return a * b * c;
+		}
+	}
+}
+
+console.log(specialPythagoreanTriplet(1000));
