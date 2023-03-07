@@ -285,4 +285,54 @@ function summationOfPrimes(n) {
 	return primes.reduce((a, b) => a + b);
 }
 
-console.log(summationOfPrimes(2000000));
+// console.log(summationOfPrimes(2000000));
+
+// 11. Largest product in a grid
+
+function largestGridProduct(arr) {
+	let maxProduct = 0;
+	let currProduct = 0;
+
+	// navigate the coordinates
+	for (let r = 0; r < arr.length; r++) {
+		for (let c = 0; c < arr[r].length; c++) {
+			const limit = arr[r].length - 3;
+
+			// check horizontal -
+			if (c < limit) {
+				currProduct = arr[r][c] * arr[r][c + 1] * arr[r][c + 2] * arr[r][c + 3];
+				maxProduct = Math.max(maxProduct, currProduct);
+			}
+
+			// check vertical |
+			if (r < limit) {
+				currProduct = arr[r][c] * arr[r + 1][c] * arr[r + 2][c] * arr[r + 3][c];
+				maxProduct = Math.max(maxProduct, currProduct);
+			}
+
+			// check diagonal /
+			if (r < limit && c > 3) {
+				currProduct = arr[r][c] * arr[r + 1][c - 1] * arr[r + 2][c - 2] * arr[r + 3][c - 3];
+				maxProduct = Math.max(maxProduct, currProduct);
+			}
+
+			// check diagonal \
+			if (r < limit && c < limit) {
+				currProduct = arr[r][c] * arr[r + 1][c + 1] * arr[r + 2][c + 2] * arr[r + 3][c + 3];
+				maxProduct = Math.max(maxProduct, currProduct);
+			}
+		}
+	}
+
+	return maxProduct;
+}
+
+const grid = [
+	[40, 17, 81, 18, 57],
+	[74, 4, 36, 16, 29],
+	[36, 42, 69, 73, 45],
+	[51, 54, 69, 16, 92],
+	[7, 97, 57, 32, 16],
+];
+
+console.log(largestGridProduct(grid));
