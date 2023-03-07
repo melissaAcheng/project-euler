@@ -276,4 +276,13 @@ function specialPythagoreanTriplet(n) {
 	}
 }
 
-console.log(specialPythagoreanTriplet(1000));
+// console.log(specialPythagoreanTriplet(1000));
+
+// 10. Summation of primes
+
+function summationOfPrimes(n) {
+	const primes = sieveOfEratosthenes(n);
+	return primes.reduce((a, b) => a + b);
+}
+
+console.log(summationOfPrimes(2000000));
