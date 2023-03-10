@@ -192,6 +192,7 @@ function isPrime(num) {
 	return true;
 }
 
+// for finding all prime numbers up to any given limit
 function sieveOfEratosthenes(n) {
 	let output = [];
 	let array = Array(n).fill(true);
@@ -335,4 +336,37 @@ const grid = [
 	[7, 97, 57, 32, 16],
 ];
 
-console.log(largestGridProduct(grid));
+// console.log(largestGridProduct(grid));
+
+// 12. Highly divisible triangular number
+
+function divisibleTriangularNum(n) {
+	// returns the trianglular number with at least n factors
+	let trianglularNum = 1;
+	let num = 1;
+
+	while (true) {
+		if (numOfFactors(trianglularNum) >= n) {
+			return trianglularNum;
+		}
+		num += 1;
+		trianglularNum += num;
+	}
+}
+
+function numOfFactors(n) {
+	let count = 0;
+	for (let i = 1; i <= Math.sqrt(n); i++) {
+		if (n % i === 0) count += 2;
+	}
+	return count;
+}
+
+// console.log(numOfFactors(28));
+// console.log(divisibleTriangularNum(500));
+
+// 13. Large sum
+
+function largeSum(arr) {
+  let sum = arr.reduce((a, b))
+}
