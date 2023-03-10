@@ -350,8 +350,3 @@ function numOfFactors(n) {
 // console.log(numOfFactors(28));
 // console.log(divisibleTriangularNum(500));
 
-// 13. Large sum
-
-function largeSum(arr) {
-  let sum = arr.reduce((a, b))
-}
